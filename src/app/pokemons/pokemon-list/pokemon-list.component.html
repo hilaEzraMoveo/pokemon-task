@@ -24,8 +24,10 @@
   
   <div class="pokemons-list">
     <div *ngFor="let pokemonEl of pokemonsByFilters">
-      <a (click)="goToPokemonDetails(pokemonEl)">
-        <app-pokemon-single class="card" [pokemon]="pokemonEl"></app-pokemon-single>
-      </a>
+        <app-pokemon-single class="card" [pokemon]="pokemonEl" (click)="goToPokemonDetails(pokemonEl)" ></app-pokemon-single>
     </div>
+  </div>
+
+  <div class="app-pokemon-details-modal" *ngIf="isDetailsVisible" (click)="toggleVisible()">
+    <app-pokemon-details [pokemon]="selectedPokemon" (click)="preventToggle($event)"></app-pokemon-details>
   </div>
