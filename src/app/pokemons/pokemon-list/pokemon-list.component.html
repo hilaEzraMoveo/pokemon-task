@@ -7,6 +7,7 @@
     (searchRequested)="searchAndDisplayPokemonByName($event)"
     (typeSelected)="searchAndDisplayPokemonsByType($event)">
     </app-pokemons-filters>
+    <hr>
     <div class="search-history-container">
       <p *ngIf = "searchHistory.length > 0">
         The last pokemons you searched: 

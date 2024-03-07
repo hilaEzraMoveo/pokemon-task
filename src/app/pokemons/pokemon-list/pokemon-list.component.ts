@@ -29,7 +29,6 @@ export class PokemonListComponent implements OnInit{
   ngOnInit(): void {
     this.getPokemons();
     this.searchHistory = this.searchHistoryService.getRecentSearchesHistory();
-    console.log(this.searchHistory);
   }
 
   getPokemons(): void {
@@ -61,7 +60,6 @@ export class PokemonListComponent implements OnInit{
 
   searchAndDisplayPokemonsByType(selectedType: string): void {
     this.selectedType = selectedType;
-    //this.searchHistoryService.addToHistory(this.selectedName, this.selectedType);
     this.filterPokemons();
   }
 
