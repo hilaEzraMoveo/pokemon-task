@@ -1,0 +1,16 @@
+<div class="search-container">
+    <div class="name-search">
+        <input type="text" 
+        [(ngModel)]="searchName" 
+        placeholder="Search by Name"
+        (input)="onNameSearch()">
+    </div>
+
+    <div class="type-search">
+        <select [(ngModel)]="selectedType">
+            <option value="">All</option>
+            <option *ngFor="let type of allTypes">{{ type }}</option>
+        </select>
+    <button (click)="filterPokemonByType()">Filter</button>
+    </div>
+</div>

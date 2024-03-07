@@ -1,0 +1,30 @@
+<div class="button-container">
+  <button class="logout-button" (click)="logout()">Logout</button>
+</div>
+
+  <div class="pokemons-filters">
+    <app-pokemons-filters  
+    (searchRequested)="searchAndDisplayPokemonByName($event)"
+    (typeSelected)="searchAndDisplayPokemonsByType($event)">
+    </app-pokemons-filters>
+    <div class="search-history-container">
+      <p *ngIf = "searchHistory.length > 0">
+        The last pokemons you searched: 
+      </p> 
+      <ul class="search-history">
+        <li *ngFor="let search of searchHistory">
+          {{search}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="pokemons-list">
+    <div *ngFor="let pokemonEl of pokemonsByFilters">
+      <a (click)="goToPokemonDetails(pokemonEl)">
+        <app-pokemon-single class="card" [pokemon]="pokemonEl"></app-pokemon-single>
+      </a>
+    </div>
+  </div>
