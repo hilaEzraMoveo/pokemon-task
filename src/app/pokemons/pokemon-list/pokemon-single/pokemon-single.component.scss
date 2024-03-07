@@ -1,6 +1,5 @@
 .pokemon-card {
     padding: 30px;
-    margin: 30px;
     text-align: center;
     background-color: #fff;
     border: 5px solid #c5bfbf;
@@ -8,8 +7,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: box-shadow 0.3s ease;
-    width: calc(50% - 10px);
-    
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
@@ -24,8 +21,6 @@
     width: 140px;
     height: auto;
     border-bottom: 2px solid #ddd;
-    margin: 0 auto;
-    margin-right: 35px;
   }
   
   .pokemon-info {

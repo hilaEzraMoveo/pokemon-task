@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon.model'
 import { PokemonService } from '../../services/pokemon.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 import { SearchHistoryService } from '../../services/search-history.service';
 
 
@@ -15,6 +14,10 @@ export class PokemonListComponent implements OnInit{
 
   pokemons: Pokemon[] = [];
   pokemonsByFilters: Pokemon[] = [];
+
+  selectedPokemon: Pokemon;
+  isDetailsVisible: boolean = false; 
+
   selectedType: string = '';
   selectedName: string = '';
   searchHistory: string[] = [];
@@ -22,8 +25,7 @@ export class PokemonListComponent implements OnInit{
   constructor(
     private pokemonService: PokemonService,
     private authService: AuthService,
-    private searchHistoryService: SearchHistoryService, 
-    private router: Router
+    private searchHistoryService: SearchHistoryService
     ){}
 
   ngOnInit(): void {
@@ -50,7 +52,8 @@ export class PokemonListComponent implements OnInit{
       this.searchHistoryService.addToHistory(pokemon);
       this.searchHistoryService.getRecentSearchesHistory();
    // }
-    this.router.navigate(['/pokemon-details', pokemon.id]);
+    this.selectedPokemon = pokemon;
+    this.isDetailsVisible = true;
   }
 
   searchAndDisplayPokemonByName(pokemonName: string): void {
@@ -79,6 +82,13 @@ export class PokemonListComponent implements OnInit{
 
   logout(): void {
     this.authService.logout();
+  }
+
+  toggleVisible(): void {
+    this.isDetailsVisible = false;
+  }
+  preventToggle(event: Event): void {
+    event.stopPropagation();
   }
 
 }

@@ -1,15 +1,17 @@
-.container {
+.popup-content{
+  position:absolute;
+  left: 40%;
+  top: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
 
     .pokemon-details {
         border: 1px solid #ccc;
         border-radius: 8px;
         padding: 20px;
         margin: 10px;
-        width: 200px;
+        width: 300px;
         text-align: center;
         display: inline-block;
         background-color:rgb(164, 52, 65);
@@ -18,7 +20,7 @@
           font-size: 30px;
           color: rgb(117, 255, 255);
           margin-bottom: 10px;
-          border-bottom: 2px solid #ccc; /* Add a solid line under the name */
+          border-bottom: 2px solid #ccc; 
           padding-bottom: 5px;
         }
       }
@@ -26,8 +28,8 @@
   
   
   .pokemon-image {
-    width: 200px; /* Increase the width */
-    height: 200px; /* Increase the height */
+    width: 200px; 
+    height: 200px; 
     margin: 0 auto;
     display: block;
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon.model';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../../services/pokemon.service';
@@ -8,23 +8,9 @@ import { PokemonService } from '../../services/pokemon.service';
   templateUrl: './pokemon-details.component.html',
   styleUrl: './pokemon-details.component.scss'
 })
-export class PokemonDetailsComponent implements OnInit{
+export class PokemonDetailsComponent {
 
-  pokemon: Pokemon; 
+   @Input() pokemon: Pokemon;
 
-  constructor(private route: ActivatedRoute,
-              private pokemonService: PokemonService){}
-
-  ngOnInit(): void {
-
-    const pokemonId = +this.route.snapshot.paramMap.get('id');
-
-    this.pokemonService.getPokemonById(pokemonId).subscribe(
-      (pokemon: Pokemon) => {
-        this.pokemon = pokemon;
-      }, 
-      (error)=> {
-        console.error('Error fetching Pokemon details:', error);
-      })
+   constructor() {}
   }
-}
