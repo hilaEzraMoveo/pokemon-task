@@ -9,6 +9,9 @@ import { PokemonDetailsComponent } from './pokemons/pokemon-details/pokemon-deta
 import { PokemonSingleComponent } from './pokemons/pokemon-list/pokemon-single/pokemon-single.component';
 import { PokemonsFiltersComponent } from './pokemons/pokemons-filters/pokemons-filters.component';
 import { LoginComponent } from './login/login.component';
+import { MyMapComponent } from './maps/my-map/my-map.component';
+import { MapDisplayComponent } from './maps/map-display/map-display.component';
+import { AutocompleteInputComponent } from './maps/autocomplete-input/autocomplete-input.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { LoginComponent } from './login/login.component';
     PokemonSingleComponent,
     PokemonDetailsComponent,
     PokemonsFiltersComponent,
-    LoginComponent
+    LoginComponent,
+    MyMapComponent,
+    MapDisplayComponent,
+    AutocompleteInputComponent
   ],
   imports: [
     BrowserModule, 

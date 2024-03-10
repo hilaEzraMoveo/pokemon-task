@@ -3,6 +3,7 @@ import { Pokemon } from '../pokemon.model'
 import { PokemonService } from '../../services/pokemon.service';
 import { AuthService } from '../../services/auth.service';
 import { SearchHistoryService } from '../../services/search-history.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class PokemonListComponent implements OnInit{
   constructor(
     private pokemonService: PokemonService,
     private authService: AuthService,
-    private searchHistoryService: SearchHistoryService
+    private searchHistoryService: SearchHistoryService,
+    private router: Router
     ){}
 
   ngOnInit(): void {
@@ -89,6 +91,10 @@ export class PokemonListComponent implements OnInit{
   }
   preventToggle(event: Event): void {
     event.stopPropagation();
+  }
+
+  displayMapsPage(){
+    this.router.navigate(['/my-map']);
   }
 
 }
