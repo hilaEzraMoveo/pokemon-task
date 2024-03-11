@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MyMapComponent } from './maps/my-map/my-map.component';
 import { MapDisplayComponent } from './maps/map-display/map-display.component';
 import { AutocompleteInputComponent } from './maps/autocomplete-input/autocomplete-input.component';
+import { MapDirectionComponent } from './maps/map-direction/map-direction.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AutocompleteInputComponent } from './maps/autocomplete-input/autocomple
     LoginComponent,
     MyMapComponent,
     MapDisplayComponent,
-    AutocompleteInputComponent
+    AutocompleteInputComponent,
+    MapDirectionComponent
   ],
   imports: [
     BrowserModule, 

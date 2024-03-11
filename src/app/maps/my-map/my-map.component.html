@@ -1,3 +1,7 @@
 <button class="back-home-button" (click)="goToHomePage()">Back to Pokemons</button>
+<button class="direction-button" (click)="showDirections()">Get Direction</button>
+<button class="style-button" (click)="toggleMapStyle()">Style</button>
+
 <app-autocomplete-input (placeSelected)="onPlaceSelected($event)"></app-autocomplete-input>
 <app-map-display (mapReady)="onMapReady($event)"></app-map-display>
+<app-map-direction [show]="showDirectionsPanel" [map]="map"></app-map-direction>

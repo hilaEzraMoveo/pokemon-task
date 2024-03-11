@@ -4,8 +4,8 @@ export const officeLocation = {
 }
 
 export const homeLocation = {
-    lat: 0,
-    lng: 0,
+    lat: 32.009911,
+    lng: 34.950179,
 }
 
 export const defaultZoomLevel: number = 11; 
