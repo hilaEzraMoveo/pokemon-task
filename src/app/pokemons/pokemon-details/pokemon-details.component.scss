@@ -1,58 +1,67 @@
-.popup-content{
-  position:absolute;
+.popup-content {
+  position: sticky;
   left: 40%;
   top: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .close-button {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: right;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 8px;
+    color: #000;
+    font-size: 20px;
+    cursor: pointer;
+  }
 
-    .pokemon-details {
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 20px;
-        margin: 10px;
-        width: 300px;
-        text-align: center;
-        display: inline-block;
-        background-color:rgb(164, 52, 65);
+  .pokemon-details {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+    display: inline-block;
+    background-color: rgb(164, 52, 65);
 
-        .pokemon-name {
-          font-size: 30px;
-          color: rgb(117, 255, 255);
-          margin-bottom: 10px;
-          border-bottom: 2px solid #ccc; 
-          padding-bottom: 5px;
-        }
-      }
+    .pokemon-name {
+      font-size: 30px;
+      color: rgb(117, 255, 255);
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
   }
-  
-  
-  .pokemon-image {
-    width: 200px; 
-    height: 200px; 
-    margin: 0 auto;
-    display: block;
-  }
-  
-  .pokemon-abilities,
-  .pokemon-types {
-    margin-top: 10px;
-  }
-  
-  .abilities-heading,
-  .types-heading {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: left;
-    color: rgb(117, 255, 255);
+}
 
-  }
-  
-  .ability,
-  .type {
-    list-style-type: none;
-    margin: 5px 0;
-    text-align: left;
-    color:rgb(230, 224, 67);
-  }
+.pokemon-image {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+}
+
+.pokemon-abilities,
+.pokemon-types {
+  margin-top: 10px;
+}
+
+.abilities-heading,
+.types-heading {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+  color: rgb(117, 255, 255);
+}
+
+.ability,
+.type {
+  list-style-type: none;
+  margin: 5px 0;
+  text-align: left;
+  color: rgb(230, 224, 67);
+}

@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../pokemon.model'
+import { Pokemon } from '../pokemon.model';
 import { PokemonService } from '../../services/pokemon.service';
 import { AuthService } from '../../services/auth.service';
 import { SearchHistoryService } from '../../services/search-history.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
   styleUrl: './pokemon-list.component.scss',
 })
-export class PokemonListComponent implements OnInit{
-
+export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = [];
   pokemonsByFilters: Pokemon[] = [];
 
   selectedPokemon: Pokemon;
-  isDetailsVisible: boolean = false; 
+  isDetailsVisible: boolean = false;
 
   selectedType: string = '';
   selectedName: string = '';
@@ -28,7 +26,7 @@ export class PokemonListComponent implements OnInit{
     private authService: AuthService,
     private searchHistoryService: SearchHistoryService,
     private router: Router
-    ){}
+  ) {}
 
   ngOnInit(): void {
     this.getPokemons();
@@ -48,12 +46,11 @@ export class PokemonListComponent implements OnInit{
   }
 
   goToPokemonDetails(pokemon: Pokemon): void {
-
-    //only if I'm doing some searches 
+    //only if I'm doing some searches
     //if(this.selectedName || this.selectedType){
-      this.searchHistoryService.addToHistory(pokemon);
-      this.searchHistoryService.getRecentSearchesHistory();
-   // }
+    this.searchHistoryService.addToHistory(pokemon);
+    this.searchHistoryService.getRecentSearchesHistory();
+    // }
     this.selectedPokemon = pokemon;
     this.isDetailsVisible = true;
   }
@@ -69,17 +66,17 @@ export class PokemonListComponent implements OnInit{
   }
 
   filterPokemons(): void {
-    let typeFilteredPokemons =
-      this.selectedType 
-        ? this.pokemons.filter((pokemon) =>
-            pokemon.types.some((type) => this.selectedType.includes(type))
-          )
-        : this.pokemons;
+    let typeFilteredPokemons = this.selectedType
+      ? this.pokemons.filter((pokemon) =>
+          pokemon.types.some((type) => this.selectedType.includes(type))
+        )
+      : this.pokemons;
 
-      typeFilteredPokemons = typeFilteredPokemons.filter((pokemon) =>
-      pokemon.name.toLowerCase().startsWith(this.selectedName.toLowerCase()));
+    typeFilteredPokemons = typeFilteredPokemons.filter((pokemon) =>
+      pokemon.name.toLowerCase().startsWith(this.selectedName.toLowerCase())
+    );
 
-      this.pokemonsByFilters = typeFilteredPokemons;
+    this.pokemonsByFilters = typeFilteredPokemons;
   }
 
   logout(): void {
@@ -93,8 +90,7 @@ export class PokemonListComponent implements OnInit{
     event.stopPropagation();
   }
 
-  displayMapsPage(){
+  displayMapsPage() {
     this.router.navigate(['/my-map']);
   }
-
 }

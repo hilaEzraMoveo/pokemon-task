@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
 import { officeLocation } from '../constants/map-data';
 import { Router } from '@angular/router';
 import { GoogleMapsService } from '../../services/google-maps.service';
@@ -9,19 +9,23 @@ import { mapStyle } from '../constants/map-style';
   templateUrl: './my-map.component.html',
   styleUrl: './my-map.component.scss'
 })
-export class MyMapComponent {
+export class MyMapComponent implements AfterViewChecked{
   
   public map: google.maps.Map;
   showDirectionsPanel: boolean = false;
   isCustomStyleApplied: boolean = false;
   
-  constructor(private router: Router, private googleMapService: GoogleMapsService) {}
+  constructor(private router: Router, private googleMapService: GoogleMapsService, private cdr: ChangeDetectorRef) {}
 
   onMapReady(map: google.maps.Map){
     this.map = map
     this.googleMapService.addMap(map);
     this.googleMapService.addMarker(officeLocation, 'Office Location');
 
+  }
+
+  ngAfterViewChecked() {
+    this.cdr.detectChanges();
   }
 
   onPlaceSelected(place: google.maps.places.PlaceResult){

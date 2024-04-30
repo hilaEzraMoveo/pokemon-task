@@ -1,21 +1,29 @@
 <div class="popup-content">
-    <div *ngIf="pokemon" class="pokemon-details">
-      <h2 class="pokemon-name">{{ pokemon.name }}</h2>
-      <img *ngIf="pokemon.image" [src]="pokemon.image" alt="{{ pokemon.name }}" class="pokemon-image">
-    
-      <div *ngIf="pokemon.abilities.length > 0" class="pokemon-abilities">
-        <h3 class="abilities-heading">Abilities:</h3>
-        <ul>
-          <li *ngFor="let ability of pokemon.abilities" class="ability">{{ ability }}</li>
-        </ul>
-      </div>
-    
-      <div *ngIf="pokemon.types.length > 0" class="pokemon-types">
-        <h3 class="types-heading">Types:</h3>
-        <ul>
-          <li *ngFor="let type of pokemon.types" class="type">{{ type }}</li>
-        </ul>
-      </div>
+  <div *ngIf="pokemon" class="pokemon-details">
+    <button class="close-button" (click)="closePopup()">X</button>
 
+    <h2 class="pokemon-name">{{ pokemon.name }}</h2>
+    <img
+      *ngIf="pokemon.image"
+      [src]="pokemon.image"
+      alt="{{ pokemon.name }}"
+      class="pokemon-image"
+    />
+
+    <div *ngIf="pokemon.abilities.length > 0" class="pokemon-abilities">
+      <h3 class="abilities-heading">Abilities:</h3>
+      <ul>
+        <li *ngFor="let ability of pokemon.abilities" class="ability">
+          {{ ability }}
+        </li>
+      </ul>
     </div>
+
+    <div *ngIf="pokemon.types.length > 0" class="pokemon-types">
+      <h3 class="types-heading">Types:</h3>
+      <ul>
+        <li *ngFor="let type of pokemon.types" class="type">{{ type }}</li>
+      </ul>
+    </div>
+  </div>
 </div>

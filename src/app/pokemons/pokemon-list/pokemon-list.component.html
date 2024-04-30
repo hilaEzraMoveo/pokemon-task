@@ -3,32 +3,45 @@
   <button class="my-map-button" (click)="displayMapsPage()">Maps</button>
 </div>
 
-  <div class="pokemons-filters">
-    <app-pokemons-filters  
+<div class="pokemons-filters">
+  <app-pokemons-filters
     (searchRequested)="searchAndDisplayPokemonByName($event)"
-    (typeSelected)="searchAndDisplayPokemonsByType($event)">
-    </app-pokemons-filters>
-    <hr>
-    <div class="search-history-container">
-      <p *ngIf = "searchHistory.length > 0">
-        The last pokemons you searched: 
-      </p> 
-      <ul class="search-history">
-        <li *ngFor="let search of searchHistory">
-          {{search}}
-        </li>
-      </ul>
-    </div>
+    (typeSelected)="searchAndDisplayPokemonsByType($event)"
+  >
+  </app-pokemons-filters>
+  <hr />
+  <div class="search-history-container">
+    <p *ngIf="searchHistory.length > 0">
+      The last five Pokemons you've watched:
+    </p>
+    <ul class="search-history">
+      <li *ngFor="let search of searchHistory">
+        {{ search }}
+      </li>
+    </ul>
   </div>
-  
-  <hr>
-  
-  <div class="pokemons-list">
-    <div *ngFor="let pokemonEl of pokemonsByFilters">
-        <app-pokemon-single class="card" [pokemon]="pokemonEl" (click)="goToPokemonDetails(pokemonEl)" ></app-pokemon-single>
-    </div>
-  </div>
+</div>
 
-  <div class="app-pokemon-details-modal" *ngIf="isDetailsVisible" (click)="toggleVisible()">
-    <app-pokemon-details [pokemon]="selectedPokemon" (click)="preventToggle($event)"></app-pokemon-details>
+<hr />
+
+<div class="pokemons-list">
+  <div *ngFor="let pokemonEl of pokemonsByFilters">
+    <app-pokemon-single
+      class="card"
+      [pokemon]="pokemonEl"
+      (click)="goToPokemonDetails(pokemonEl)"
+    ></app-pokemon-single>
   </div>
+</div>
+
+<div
+  class="app-pokemon-details-modal"
+  *ngIf="isDetailsVisible"
+  (click)="toggleVisible()"
+>
+  <app-pokemon-details
+    [pokemon]="selectedPokemon"
+    (close)="toggleVisible()"
+    (click)="preventToggle($event)"
+  ></app-pokemon-details>
+</div>
