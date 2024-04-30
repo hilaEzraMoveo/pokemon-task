@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class PokemonListComponent implements OnInit {
   pokemons: Pokemon[] = [];
   pokemonsByFilters: Pokemon[] = [];
+  tenPokemons: Pokemon[] = [];
 
   selectedPokemon: Pokemon;
   isDetailsVisible: boolean = false;
@@ -20,6 +21,10 @@ export class PokemonListComponent implements OnInit {
   selectedType: string = '';
   selectedName: string = '';
   searchHistory: string[] = [];
+
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  totalPages: number = 10;
 
   constructor(
     private pokemonService: PokemonService,
@@ -29,20 +34,41 @@ export class PokemonListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAllPokemons();
     this.getPokemons();
     this.searchHistory = this.searchHistoryService.getRecentSearchesHistory();
   }
 
-  getPokemons(): void {
-    this.pokemonService.getPokemons().subscribe(
+  getAllPokemons(): void {
+    this.pokemonService.getAllPokemons().subscribe(
       (pokemons: Pokemon[]) => {
         this.pokemons = pokemons;
-        this.pokemonsByFilters = pokemons;
+        //this.pokemonsByFilters = pokemons;
       },
       (error) => {
         console.error('Error fetching Pokemon list', error);
       }
     );
+  }
+
+  getPokemons(): void {
+    this.pokemonService
+      .getPokemons(this.currentPage, this.itemsPerPage)
+      .subscribe(
+        (pokemons: Pokemon[]) => {
+          this.pokemonsByFilters = pokemons;
+          this.tenPokemons = pokemons;
+        },
+        (error) => {
+          console.error('Error fetching Pokemon list', error);
+        }
+      );
+  }
+
+  onPageChange(pageNumber: number): void {
+    this.currentPage = pageNumber;
+    console.log(this.currentPage);
+    this.getPokemons();
   }
 
   goToPokemonDetails(pokemon: Pokemon): void {
@@ -67,10 +93,10 @@ export class PokemonListComponent implements OnInit {
 
   filterPokemons(): void {
     let typeFilteredPokemons = this.selectedType
-      ? this.pokemons.filter((pokemon) =>
+      ? this.tenPokemons.filter((pokemon) =>
           pokemon.types.some((type) => this.selectedType.includes(type))
         )
-      : this.pokemons;
+      : this.tenPokemons;
 
     typeFilteredPokemons = typeFilteredPokemons.filter((pokemon) =>
       pokemon.name.toLowerCase().startsWith(this.selectedName.toLowerCase())
